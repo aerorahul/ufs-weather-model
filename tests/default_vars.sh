@@ -7,14 +7,14 @@
 #
 ###############################################################################
 
-if [ $MACHINE_ID = wcoss_cray ]; then
+if [ ${MACHINE_ID:-} = wcoss_cray ]; then
 
   TASKS_dflt=150 ; TPN_dflt=24 ; INPES_dflt=3 ; JNPES_dflt=8
   TASKS_thrd=84  ; TPN_thrd=12 ; INPES_thrd=3 ; JNPES_thrd=4
   TASKS_stretch=48 ; TPN_stretch=24 ; INPES_stretch=2 ; JNPES_stretch=4
   TASKS_strnest=96 ; TPN_strnest=24 ; INPES_strnest=2 ; JNPES_strnest=4
 
-elif [ $MACHINE_ID = wcoss_dell_p3 ]; then
+elif [ ${MACHINE_ID:-} = wcoss_dell_p3 ]; then
 
   TASKS_dflt=150 ; TPN_dflt=28 ; INPES_dflt=3 ; JNPES_dflt=8
   TASKS_thrd=84  ; TPN_thrd=14 ; INPES_thrd=3 ; JNPES_thrd=4
@@ -45,7 +45,7 @@ elif [ $MACHINE_ID = wcoss_dell_p3 ]; then
   THRD_cpl_c384=1; WPG_cpl_c384=6;  MPB_cpl_c384="0 143"; APB_cpl_c384="0 149"
   OPB_cpl_c384="150 269"; IPB_cpl_c384="270 317"
 
-elif [[ $MACHINE_ID = orion.* ]]; then
+elif [[ ${MACHINE_ID:-} = orion.* ]]; then
 
   TASKS_dflt=150 ; TPN_dflt=40 ; INPES_dflt=3 ; JNPES_dflt=8
   TASKS_thrd=84  ; TPN_thrd=20 ; INPES_thrd=3 ; JNPES_thrd=4
@@ -76,7 +76,7 @@ elif [[ $MACHINE_ID = orion.* ]]; then
   THRD_cpl_c384=1; WPG_cpl_c384=6;  MPB_cpl_c384="0 143"; APB_cpl_c384="0 149"
   OPB_cpl_c384="150 269"; IPB_cpl_c384="270 317"
 
-elif [[ $MACHINE_ID = hera.* ]]; then
+elif [[ ${MACHINE_ID:-} = hera.* ]]; then
 
   TASKS_dflt=150 ; TPN_dflt=40 ; INPES_dflt=3 ; JNPES_dflt=8
   TASKS_thrd=84  ; TPN_thrd=20 ; INPES_thrd=3 ; JNPES_thrd=4
@@ -107,39 +107,39 @@ elif [[ $MACHINE_ID = hera.* ]]; then
   THRD_cpl_c384=1; WPG_cpl_c384=6;  MPB_cpl_c384="0 143"; APB_cpl_c384="0 149"
   OPB_cpl_c384="150 269"; IPB_cpl_c384="270 317"
 
-elif [[ $MACHINE_ID = linux.* ]]; then
+elif [[ ${MACHINE_ID:-} = linux.* ]]; then
 
   if [[ $CI_TEST = true ]]; then
-  TASKS_dflt=12 ; TPN_dflt=16 ; INPES_dflt=1 ; JNPES_dflt=1
+    TASKS_dflt=12 ; TPN_dflt=16 ; INPES_dflt=1 ; JNPES_dflt=1
   else
-  TASKS_dflt=150 ; TPN_dflt=40 ; INPES_dflt=3 ; JNPES_dflt=8
+    TASKS_dflt=150 ; TPN_dflt=40 ; INPES_dflt=3 ; JNPES_dflt=8
   fi
   TASKS_thrd=84  ; TPN_thrd=20 ; INPES_thrd=3 ; JNPES_thrd=4
   TASKS_stretch=48 ; TPN_stretch=12 ; INPES_stretch=2 ; JNPES_stretch=4
   TASKS_strnest=96 ; TPN_strnest=12 ; INPES_strnest=2 ; JNPES_strnest=4
 
-elif [[ $MACHINE_ID = jet.* ]]; then
+elif [[ ${MACHINE_ID:-} = jet.* ]]; then
 
   TASKS_dflt=150 ; TPN_dflt=24 ; INPES_dflt=3 ; JNPES_dflt=8
   TASKS_thrd=84  ; TPN_thrd=12 ; INPES_thrd=3 ; JNPES_thrd=4
   TASKS_stretch=48 ; TPN_stretch=12 ; INPES_stretch=2 ; JNPES_stretch=4
   TASKS_strnest=96 ; TPN_strnest=12 ; INPES_strnest=2 ; JNPES_strnest=4
 
-elif [[ $MACHINE_ID = gaea.* ]]; then
+elif [[ ${MACHINE_ID:-} = gaea.* ]]; then
 
   TASKS_dflt=150 ; TPN_dflt=36 ; INPES_dflt=3 ; JNPES_dflt=8
   TASKS_thrd=84  ; TPN_thrd=18 ; INPES_thrd=3 ; JNPES_thrd=4
   TASKS_stretch=48 ; TPN_stretch=18 ; INPES_stretch=2 ; JNPES_stretch=4
   TASKS_strnest=96 ; TPN_strnest=18 ; INPES_strnest=2 ; JNPES_strnest=4
 
-elif [[ $MACHINE_ID = cheyenne.* ]]; then
+elif [[ ${MACHINE_ID:-} = cheyenne.* ]]; then
 
   TASKS_dflt=150 ; TPN_dflt=36 ; INPES_dflt=3 ; JNPES_dflt=8
   TASKS_thrd=84  ; TPN_thrd=18 ; INPES_thrd=3 ; JNPES_thrd=4
   TASKS_stretch=48 ; TPN_stretch=18 ; INPES_stretch=2 ; JNPES_stretch=4
   TASKS_strnest=96 ; TPN_strnest=18 ; INPES_strnest=2 ; JNPES_strnest=4
 
-elif [[ $MACHINE_ID = stampede.* ]]; then
+elif [[ ${MACHINE_ID:-} = stampede.* ]]; then
 
   TASKS_dflt=150 ; TPN_dflt=48 ; INPES_dflt=3 ; JNPES_dflt=8
   TASKS_thrd=84  ; TPN_thrd=24 ; INPES_thrd=3 ; JNPES_thrd=4
@@ -168,15 +168,16 @@ elif [[ $MACHINE_ID = stampede.* ]]; then
   TASKS_cpl_c384=318; TPN_cpl_c384=48; INPES_cpl_c384=3; JNPES_cpl_c384=8
   THRD_cpl_c384=1; WPG_cpl_c384=6;  MPB_cpl_c384="0 143"; APB_cpl_c384="0 149"
   OPB_cpl_c384="150 269"; IPB_cpl_c384="270 317"
+
 else
 
-  echo "Unknown MACHINE_ID ${MACHINE_ID}"
-  exit 1
+  echo "Unknown / Unspecified MACHINE_ID = ${MAHINE_ID:-}"
+  echo "Assuming defaults"
 
 fi
 
 # Longer default walltime for GNU
-if [[ $RT_COMPILER = gnu ]]; then
+if [[ ${RT_COMPILER:-} = gnu ]]; then
   WLCLK_dflt=30
 else
   WLCLK_dflt=15

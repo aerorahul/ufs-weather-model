@@ -81,6 +81,6 @@ export INPUT_NML=thompson.nml.IN
 export FV3_RUN=thompson_run.IN
 
 
-if [[ $MACHINE_ID = cheyenne.intel ]]; then
+if [[ ${MACHINE_ID:-} = cheyenne.intel ]]; then
   export WLCLK=30
 fi

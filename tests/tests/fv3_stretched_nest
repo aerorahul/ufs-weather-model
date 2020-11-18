@@ -103,6 +103,6 @@ export INPUT_NML=stretched-nest-input.nml.IN
 export INPUT_NEST02_NML=input_nest02.nml.IN
 export FV3_RUN=fv3_stretched_run.IN
 
-if [[ $MACHINE_ID = *.gnu ]]; then
+if [[ ${MACHINE_ID:-} = *.gnu ]]; then
   export WLCLK=30
 fi

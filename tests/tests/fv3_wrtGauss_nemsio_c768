@@ -56,11 +56,11 @@ export LIST_FILES="atmos_4xdaily.tile1.nc \
 export_fv3
 
 export TASKS=1470
-if [[ $MACHINE_ID = cheyenne.* ]]; then
+if [[ ${MACHINE_ID:-} = cheyenne.* ]]; then
   export TPN=36
-elif [[ $MACHINE_ID = hera.* ]]; then
+elif [[ ${MACHINE_ID:-} = hera.* ]]; then
   export TPN=10
-elif [[ $MACHINE_ID = wcoss_cray ]]; then
+elif [[ ${MACHINE_ID:-} = wcoss_cray ]]; then
   export TPN=6
 else
   export TPN=12

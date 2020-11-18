@@ -106,6 +106,6 @@ export FV3_RUN=ccpp_stretched_run.IN
 export CCPP_SUITE=FV3_GFS_2017_stretched
 export CCPP_LIB_DIR=ccpp/lib
 
-if [[ $MACHINE_ID = *.gnu ]]; then
+if [[ ${MACHINE_ID:-} = *.gnu ]]; then
   export WLCLK=30
 fi

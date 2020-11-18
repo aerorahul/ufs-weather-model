@@ -224,6 +224,7 @@ elif [[ $MACHINE_ID = hera.* ]]; then
 
 elif [[ $MACHINE_ID = orion.* ]]; then
 
+  set +x
   source $PATHTR/NEMS/src/conf/module-setup.sh.inc
 
   module use $PATHTR/modulefiles/${MACHINE_ID}
@@ -231,6 +232,7 @@ elif [[ $MACHINE_ID = orion.* ]]; then
   module load gcc/8.3.0
 
   module load contrib rocoto/1.3.1
+  set -x
   ROCOTORUN=$(which rocotorun)
   ROCOTOSTAT=$(which rocotostat)
   ROCOTOCOMPLETE=$(which rocotocomplete)
