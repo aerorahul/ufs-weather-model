@@ -99,6 +99,7 @@ source rt_utils.sh
 
 if [[ $MACHINE_ID = wcoss_cray ]]; then
 
+  set +x
   source $PATHTR/NEMS/src/conf/module-setup.sh.inc
   module load xt-lsfhpc
 
@@ -109,12 +110,15 @@ if [[ $MACHINE_ID = wcoss_cray ]]; then
 
   module use /usrx/local/emc_rocoto/modulefiles
   module load rocoto/1.3.0rc2
+  set -x
   ROCOTORUN=$(which rocotorun)
   ROCOTOSTAT=$(which rocotostat)
   ROCOTOCOMPLETE=$(which rocotocomplete)
   ROCOTO_SCHEDULER=lsfcray
 
+  set +x
   module load ecflow/intel/4.7.1
+  set -x
   ECFLOW_START=${ECF_ROOT}/intel/bin/ecflow_start.sh
   ECF_PORT=$(grep $USER /usrx/local/sys/ecflow/assigned_ports.txt | awk '{print $2}')
 
@@ -136,6 +140,7 @@ if [[ $MACHINE_ID = wcoss_cray ]]; then
 
 elif [[ $MACHINE_ID = wcoss_dell_p3 ]]; then
 
+  set +x
   source $PATHTR/NEMS/src/conf/module-setup.sh.inc
   module load lsf/10.1
 
@@ -146,13 +151,16 @@ elif [[ $MACHINE_ID = wcoss_dell_p3 ]]; then
 
   module use /usrx/local/dev/emc_rocoto/modulefiles
   module load ruby/2.5.1 rocoto/1.3.0rc2
+  set -x
   ROCOTORUN=$(which rocotorun)
   ROCOTOSTAT=$(which rocotostat)
   ROCOTOCOMPLETE=$(which rocotocomplete)
   ROCOTO_SCHEDULER=lsf
 
+  set +x
   module load ips/18.0.1.163
   module load ecflow/4.7.1
+  set -x
   ECFLOW_START=${ECF_ROOT}/intel/bin/ecflow_start.sh
   ECF_PORT=$(grep $USER /usrx/local/sys/ecflow/assigned_ports.txt | awk '{print $2}')
 
@@ -169,7 +177,9 @@ elif [[ $MACHINE_ID = wcoss_dell_p3 ]]; then
 
 elif [[ $MACHINE_ID = gaea.* ]]; then
 
+  set +x
   source $PATHTR/NEMS/src/conf/module-setup.sh.inc
+  set -x
 
 #  export PATH=/gpfs/hps/nco/ops/ecf/ecfdir/ecflow.v4.1.0.intel/bin:$PATH
   export PYTHONPATH=
@@ -192,12 +202,14 @@ elif [[ $MACHINE_ID = gaea.* ]]; then
 
 elif [[ $MACHINE_ID = hera.* ]]; then
 
+  set +x
   source $PATHTR/NEMS/src/conf/module-setup.sh.inc
 
   module use $PATHTR/modulefiles/${MACHINE_ID}
   module load fv3
 
   module load rocoto
+  set -x
   ROCOTORUN=$(which rocotorun)
   ROCOTOSTAT=$(which rocotostat)
   ROCOTOCOMPLETE=$(which rocotocomplete)
@@ -255,12 +267,14 @@ elif [[ $MACHINE_ID = orion.* ]]; then
 
 elif [[ $MACHINE_ID = jet.* ]]; then
 
+  set +x
   source $PATHTR/NEMS/src/conf/module-setup.sh.inc
 
   module use $PATHTR/modulefiles/${MACHINE_ID}
   module load fv3
 
   module load rocoto/1.3.2
+  set -x
   ROCOTORUN=$(which rocotorun)
   ROCOTOSTAT=$(which rocotostat)
   ROCOTOCOMPLETE=$(which rocotocomplete)
@@ -285,9 +299,11 @@ elif [[ $MACHINE_ID = jet.* ]]; then
 
 elif [[ $MACHINE_ID = cheyenne.* ]]; then
 
+  set +x
   source $PATHTR/NEMS/src/conf/module-setup.sh.inc
 
   module load python/2.7.16
+  set -x
   export PATH=/glade/p/ral/jntp/tools/ecFlow-5.3.1/bin:$PATH
   export PYTHONPATH=/glade/p/ral/jntp/tools/ecFlow-5.3.1/lib/python2.7/site-packages
   ECFLOW_START=/glade/p/ral/jntp/tools/ecFlow-5.3.1/bin/ecflow_start.sh
@@ -305,7 +321,9 @@ elif [[ $MACHINE_ID = cheyenne.* ]]; then
 
 elif [[ $MACHINE_ID = stampede.* ]]; then
 
+  set +x
   source $PATHTR/NEMS/src/conf/module-setup.sh.inc
+  set -x
 
   export PYTHONPATH=
   ECFLOW_START=
